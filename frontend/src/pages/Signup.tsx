@@ -5,20 +5,25 @@ import styles from "../css/Signup.module.css"
 
 interface InputProps {
   label: string;
-  placeholder: string;
   description: string;
   value: string;
+  type: string;
   onChange: (e: string) => void;
 }
 
 
-const Input: React.FC<InputProps> = ({label, description, placeholder, value, onChange}) => {
+const Input: React.FC<InputProps> = ({label, type, description, value, onChange}) => {
   return (
-    <div>
-      <label>{label}</label>
-      <div>
-        <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} />
-        <small>{description}</small>
+    <div className={styles.row}>
+      <label className={styles.Label}>{label}</label>
+      <div className={styles.InputContainer}>
+        <input
+          className={styles.Input}
+          value={value}
+          type={type}
+          onChange={(e) => onChange(e.target.value)} 
+        />
+        <small className={styles.Description}>{description}</small>
       </div>
     </div>
   );
@@ -44,11 +49,30 @@ const Signup: React.FC = () => {
   return (
     <div className={styles.SignupFormContainer}>
       <h1>Register</h1>
-      <Input label="Choose Username" description="Only letters, numbers, - and _ can be used." placeholder="Username" value={username} onChange={setUsername}/>
-      <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignup}>회원가입</button>
+      <div>
+        <Input 
+          label="Choose Username"
+          type="text"
+          description="Only letters, numbers, - and _ can be used." 
+          value={username} 
+          onChange={setUsername}
+        />
+        <Input 
+          label="Email Address"
+          type="text"
+          description="Not used for marketing. We'll never share your email with anyone else." 
+          value={email} 
+          onChange={setEmail} 
+        />
+        <Input 
+          label="Password"
+          type="password"
+          description="At least 8 characters." 
+          value={password} 
+          onChange={setPassword} 
+        />
+        <button onClick={handleSignup}>회원가입</button>
+      </div>
     </div>
   );
 };
