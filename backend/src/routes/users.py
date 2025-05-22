@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 import bcrypt
 
 from src.db.database import get_db
-from src.models.users import User, UserCreate, UserLogin
+from src.schema.users import User, UserCreate, UserLogin
 from src.auth.jwt_handler import create_access_token
 from src.services.users import get_current_user
 

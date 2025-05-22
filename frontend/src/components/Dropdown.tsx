@@ -24,7 +24,7 @@ function Dropdown() {
       {isOpen && (
         <div className={DropdownStyles.dropdwonContainer}>
           <div className={DropdownStyles.dropdownItem}>
-            <span className={DropdownStyles.item}>My Page</span>
+            <span className={DropdownStyles.item}>mypage</span>
           </div>
           <div className={DropdownStyles.dropdownItem}>
             <span onClick={(e) => {
@@ -32,7 +32,7 @@ function Dropdown() {
                 logout();
             }}
                 className={DropdownStyles.item}
-            >Log out</span>
+            >logout</span>
           </div>
         </div>
       )}

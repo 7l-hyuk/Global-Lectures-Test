@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { faUser, faLock, faSignIn } from "@fortawesome/free-solid-svg-icons";
 
 import { login } from "../api/auth";
 import { useAuth } from "../context/AuthContext";
+import styles from "../css/Login.module.css"
+import { BaseButton, LoginInput } from "../components/Form";
 
 
 const Login: React.FC = () => {
@@ -22,11 +25,27 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>로그인</h1>
-      <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>로그인</button>
+    <div className={styles.LoginFormContainer}>
+      <h1>LOGIN</h1>
+      <LoginInput
+        label="E-Mail Address or Username"
+        value={username}
+        type="text"
+        onChange={setUsername}
+        styles={styles}
+        icon={faUser}
+      />
+      <LoginInput
+        label="Password"
+        value={password}
+        type="password"
+        onChange={setPassword}
+        styles={styles}
+        icon={faLock}
+      />
+      <div className={styles.LoginButtonContainer}>
+          <BaseButton label="Login" icon={faSignIn} buttonStyle={styles.LoginButton} onClick={handleLogin} disabled={false} />
+      </div>
     </div>
   );
 };

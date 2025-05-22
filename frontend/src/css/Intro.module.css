@@ -24,7 +24,6 @@
     padding: 1rem;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
     color: #202020;
     font-size: 1rem;
     font-weight: 400;
@@ -32,14 +31,14 @@
     text-align: left;
 }
 
-.fileUploadButtonContainer {
+.FileuploadButtonContainer {
     display: flex;
     justify-content: center;
     vertical-align: middle;
     margin-bottom: 1.5rem;
 }
 
-.fileUploadButton {
+.BaseButton {
     cursor: pointer;
     border-radius: .27rem;
     font-size: 1.25rem;
@@ -48,18 +47,33 @@
     background-color: #b53836;
     border-color: #b53836;
     color: white;
+    border: 1px solid;
 }
 
-.fileUploadButton:hover {
+.BaseButton:disabled {
+    background-color: #b53836;
+    border-color: #b53836;
+    color: #fff;
+    opacity: .65;
+}
+
+.BaseButton:hover {
     background-color: #982f2d;
     border-color: #8e2c2a;
     color: #fff;
 }
 
+.card {
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    margin-bottom: 1rem !important;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
 
-.fileplus::before {
-    content: "\f319" !important;
-    font-family: 'Font Awesome';
-    font-weight: 900;
-    font-style: normal;
+.cardContent {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
 }

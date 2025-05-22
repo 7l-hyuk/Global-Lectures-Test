@@ -12,6 +12,13 @@ dependencies = [
     "pydantic[email]>=2.11.4",
     "python-dotenv>=1.1.0",
     "python-jose[cryptography]>=3.4.0",
+    "python-multipart>=0.0.20",
+    "soundfile>=0.13.1",
     "sqlalchemy>=2.0.40",
+    "transformers>=4.51.3",
     "uvicorn>=0.34.2",
+    "whisperx",
 ]
+
+[tool.uv.sources]
+whisperx = { git = "https://github.com/m-bain/whisperx.git" }

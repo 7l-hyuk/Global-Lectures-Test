@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.routers.users import users_router
+from src.routes.users import users_router
+from src.routes.dub import dubbing_router
 
 app = FastAPI()
 
@@ -16,3 +17,4 @@ app.add_middleware(
 )
 
 app.include_router(users_router)
+app.include_router(dubbing_router)

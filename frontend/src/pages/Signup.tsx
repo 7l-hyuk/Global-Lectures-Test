@@ -1,28 +1,11 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 import { signup } from "../api/auth";
 import styles from "../css/Signup.module.css"
-
-interface InputProps {
-  label: string;
-  placeholder: string;
-  description: string;
-  value: string;
-  onChange: (e: string) => void;
-}
-
-
-const Input: React.FC<InputProps> = ({label, description, placeholder, value, onChange}) => {
-  return (
-    <div>
-      <label>{label}</label>
-      <div>
-        <input placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} />
-        <small>{description}</small>
-      </div>
-    </div>
-  );
-}
+import { BaseButton } from "../components/Form";
+import { SignupInput } from "../components/Form";
 
 
 const Signup: React.FC = () => {
@@ -44,11 +27,35 @@ const Signup: React.FC = () => {
   return (
     <div className={styles.SignupFormContainer}>
       <h1>Register</h1>
-      <Input label="Choose Username" description="Only letters, numbers, - and _ can be used." placeholder="Username" value={username} onChange={setUsername}/>
-      <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignup}>회원가입</button>
+      <div>
+        <SignupInput 
+          label="Choose Username"
+          type="text"
+          description="Only letters, numbers, - and _ can be used." 
+          value={username} 
+          onChange={setUsername}
+          styles={styles}
+        />
+        <SignupInput 
+          label="Email Address"
+          type="text"
+          description="Not used for marketing. We'll never share your email with anyone else." 
+          value={email} 
+          onChange={setEmail} 
+          styles={styles}
+        />
+        <SignupInput 
+          label="Password"
+          type="password"
+          description="At least 8 characters." 
+          value={password} 
+          onChange={setPassword}
+          styles={styles}
+        />
+        <div className={styles.RegisterButtonContainer}>
+          <BaseButton label="Register" icon={faUser} buttonStyle={styles.RegisterButton} onClick={handleSignup} disabled={false} />
+        </div>
+      </div>
     </div>
   );
 };
